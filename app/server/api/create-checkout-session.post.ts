@@ -1,6 +1,7 @@
 import Stripe from 'stripe'
 import { prisma } from '#utils/prisma'
 import { verifyToken } from '#utils/auth'
+import { createError } from 'h3'
 
 export default defineEventHandler(async (event) => {
   const userId = verifyToken(event)
@@ -9,6 +10,12 @@ export default defineEventHandler(async (event) => {
     return {}
   }
 
+  const user = await prisma.user.findUnique({ where: { id: userId } })
+  if (!user) {
+    throw createError({ statusCode: 404, statusMessage: '帳號不存在' })
+  }
+
+
   const body = await readBody(event)
   const plan = body?.plan as string | undefined
   const user = await prisma.user.findUnique({ where: { id: userId } })
@@ -16,6 +23,7 @@ export default defineEventHandler(async (event) => {
     setResponseStatus(event, 404)
     return {}
   }
+
 
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
     apiVersion: '2023-08-16'

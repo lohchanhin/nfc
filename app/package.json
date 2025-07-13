@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "nuxt dev",
+    "mongo": "mongod --dbpath C:\\\\data\\\\db --replSet rs0 --bind_ip 127.0.0.1",
+    "mongo:init": "mongosh --eval \"rs.initiate()\"",
+    "dev": "concurrently \"npm run mongo\" \"nuxt dev\"",
     "build": "nuxt build",
     "start": "nuxt start"
   },
@@ -20,6 +22,7 @@
     "@types/node": "^20.5.9",
     "autoprefixer": "^10.4.14",
     "prisma": "^5.22.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "concurrently": "^8.2.2"
   }
 }

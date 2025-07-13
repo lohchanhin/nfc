@@ -18,7 +18,6 @@ export default defineEventHandler(async (event) => {
 
   const body = await readBody(event)
   const plan = body?.plan as string | undefined
-  const user = await prisma.user.findUnique({ where: { id: userId } })
   if (!user) {
     setResponseStatus(event, 404)
     return {}

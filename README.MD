@@ -6,6 +6,7 @@
 
 ```bash
 cd app
+cp .env.example .env  # 建立環境設定檔
 npm install        # 如環境允許，安裝相依套件
 npm run dev        # 啟動開發伺服器
 ```

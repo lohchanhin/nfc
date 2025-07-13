@@ -9,8 +9,10 @@
 cd app
 cp .env.example .env  # 建立環境設定檔
 npm install        # 如環境允許，安裝相依套件
-npm run dev        # 啟動開發伺服器
+npm run dev        # 啟動開發伺服器並自動啟動本地 MongoDB
 ```
+
+預設 `mongo` 指令會將資料儲存於 `./data/db` 目錄，如需其他路徑可自行調整 `app/package.json`。
 
 複製 `.env.example` 為 `.env` 後可調整資料庫連線字串，預設使用 MongoDB。
 

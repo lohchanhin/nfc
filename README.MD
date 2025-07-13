@@ -1,3 +1,21 @@
+
+# Nuxt 3 Sample Project
+
+此專案包含位於 `app/` 目錄的基本 Nuxt 3 架構，已配置 TypeScript、Tailwind CSS 與 Prisma。
+
+## 使用方式
+
+```bash
+cd app
+cp .env.example .env  # 建立環境設定檔
+npm install        # 如環境允許，安裝相依套件
+npm run dev        # 啟動開發伺服器
+```
+
+複製 `.env.example` 為 `.env` 後可調整資料庫連線字串，預設使用 SQLite。
+
+Prisma schema 位於 `app/prisma/schema.prisma`，`server/routes/` 目前為空目錄，可自行新增 API 路由。
+
 # Nuxt 3 NFC 好評系統
 
 本專案示範如何使用 **Nuxt 3** 建立一個結合 NFC 的好評收集系統。透過將商品或服務搭配 NFC 標籤，使用者可以快速掃描並留下好評或進行付款。專案採用 PostgreSQL 儲存資料，並整合 Stripe 進行金流處理。
@@ -77,4 +95,5 @@
 - Stripe 金鑰與資料庫連線資訊請勿直接寫入程式碼庫，應放入 `.env` 檔並設定忽略規則。
 
 歡迎依需求擴充或調整此專案，若有任何問題歡迎提出 Issue 或 Pull Request。
+
 

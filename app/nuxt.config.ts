@@ -8,5 +8,10 @@ export default defineNuxtConfig({
   },
   alias: {
     '#utils': resolve(__dirname, 'server/utils')
+  },
+  runtimeConfig: {
+    public: {
+      GA_ID: process.env.GA_ID
+    }
   }
 })

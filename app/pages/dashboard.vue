@@ -19,6 +19,12 @@
           取消訂閱
         </button>
       </div>
+      <button
+        class="px-4 py-2 bg-gray-600 text-white rounded"
+        @click="onLogout"
+      >
+        登出
+      </button>
     </div>
   </div>
 </template>
@@ -55,5 +61,12 @@ const onCancel = async () => {
   if (confirm('確定要取消訂閱嗎？')) {
     await cancel()
   }
+}
+
+const { logout } = useAuth()
+const onLogout = async () => {
+  await $fetch('/api/logout', { method: 'POST' })
+  logout()
+  await navigateTo('/')
 }
 </script>

@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({ middleware: 'auth' })
+definePageMeta({ middleware: "auth", layout: "default" })
 
 interface SubscriptionRes { status: string | null }
 

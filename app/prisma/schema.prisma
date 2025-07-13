@@ -1,7 +1,7 @@
 // Prisma schema
 
 datasource db {
-  provider = "sqlite"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
@@ -10,12 +10,12 @@ generator client {
 }
 
 model Example {
-  id   Int    @id @default(autoincrement())
+  id   String  @id @default(auto()) @map("_id") @db.ObjectId
   name String
 }
 
 model User {
-  id                 Int      @id @default(autoincrement())
+  id                 String   @id @default(auto()) @map("_id") @db.ObjectId
   email              String   @unique
   password           String
   stripeCustomerId   String?  @map("stripe_customer_id")

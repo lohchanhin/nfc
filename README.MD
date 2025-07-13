@@ -12,13 +12,13 @@ npm install        # 如環境允許，安裝相依套件
 npm run dev        # 啟動開發伺服器
 ```
 
-複製 `.env.example` 為 `.env` 後可調整資料庫連線字串，預設使用 SQLite。
+複製 `.env.example` 為 `.env` 後可調整資料庫連線字串，預設使用 MongoDB。
 
 Prisma schema 位於 `app/prisma/schema.prisma`，`server/routes/` 目前為空目錄，可自行新增 API 路由。
 
 # Nuxt 3 NFC 好評系統
 
-本專案示範如何使用 **Nuxt 3** 建立一個結合 NFC 的好評收集系統。透過將商品或服務搭配 NFC 標籤，使用者可以快速掃描並留下好評或進行付款。專案採用 PostgreSQL 儲存資料，並整合 Stripe 進行金流處理。
+本專案示範如何使用 **Nuxt 3** 建立一個結合 NFC 的好評收集系統。透過將商品或服務搭配 NFC 標籤，使用者可以快速掃描並留下好評或進行付款。專案採用 MongoDB 儲存資料，並整合 Stripe 進行金流處理。
 
 ## 目錄架構
 
@@ -40,7 +40,7 @@ Prisma schema 位於 `app/prisma/schema.prisma`，`server/routes/` 目前為空�
 ## 環境需求
 
 - **Node.js 18** 以上版本
-- **PostgreSQL** 資料庫
+- **MongoDB** 資料庫
 - **Stripe** 帳號與 API 金鑰
 - 建議安裝 `pnpm` 以加快套件安裝速度（亦可使用 `npm`）
 
@@ -57,14 +57,14 @@ Prisma schema 位於 `app/prisma/schema.prisma`，`server/routes/` 目前為空�
    ```
 3. 設定環境變數 `.env`：
    ```env
-   DATABASE_URL=postgres://user:password@localhost:5432/db_name
+   DATABASE_URL=mongodb://localhost:27017/nfc
    STRIPE_SECRET_KEY=your_stripe_secret
    JWT_SECRET=your_jwt_secret
    GA_ID=G-XXXX
    ```
-4. 建立資料庫與執行遷移（若有使用 ORM，如 Prisma）：
+4. 同步 Prisma schema 至資料庫：
    ```bash
-   pnpm prisma migrate deploy
+   pnpm prisma db push
    ```
 5. 啟動開發伺服器：
    ```bash
@@ -74,7 +74,7 @@ Prisma schema 位於 `app/prisma/schema.prisma`，`server/routes/` 目前為空�
 ## 部署方式
 
 ### 本機部署
-1. 確認 PostgreSQL 已啟動並可連線。
+1. 確認 MongoDB 已啟動並可連線。
 2. 於專案根目錄執行 `pnpm build`，再以 `pnpm start` 啟動。
 
 ### 部署到 Vercel

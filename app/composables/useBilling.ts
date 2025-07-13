@@ -8,7 +8,7 @@ export function useBilling() {
   const api = useApi()
 
   const openPortal = async () => {
-    const { data } = await api.post<PortalSessionRes>('/billing/portal-session')
+    const { data } = await api.post<PortalSessionRes>('/api/billing/portal-session')
     if (process.client && data.url) {
       window.location.href = data.url
     }

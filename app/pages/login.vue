@@ -1,28 +1,38 @@
 <template>
   <div class="max-w-md mx-auto p-4">
     <h1 class="text-xl font-bold mb-4">會員登入</h1>
-  <form @submit.prevent="onSubmit" class="space-y-4">
-      <div>
-        <label for="login-email" class="block mb-1">Email</label>
-        <input id="login-email" v-model="email" type="email" required placeholder="Email" class="w-full border p-2" />
-      </div>
-      <div>
-        <label for="login-password" class="block mb-1">Password</label>
-        <input id="login-password" v-model="password" type="password" required placeholder="Password" class="w-full border p-2" />
-      </div>
-      <button type="submit" class="px-4 py-2 bg-blue-500 text-white">登入</button>
-      <p v-if="errorMsg" class="text-red-700 bg-red-100 border border-red-500 rounded p-2">
-        {{ errorMsg }}
-      </p>
+    <form @submit.prevent="onSubmit" class="space-y-4">
+      <input
+        v-model="email"
+        type="email"
+        placeholder="Email"
+        autocomplete="email"
+        class="w-full border border-gray-300 rounded px-4 py-2"
+      />
+      <input
+        v-model="password"
+        type="password"
+        placeholder="Password"
+        autocomplete="current-password"
+        class="w-full border border-gray-300 rounded px-4 py-2"
+      />
+      <p v-if="errorMsg" class="text-red-500 text-sm">{{ errorMsg }}</p>
+      <button
+        type="submit"
+        class="w-full py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+      >
+        登入
+      </button>
+
     </form>
   </div>
 </template>
 
 <script setup lang="ts">
-definePageMeta({ layout: "default" })
-const email = ref('')
-const password = ref('')
-const errorMsg = ref('')
+const email = ref<string>('')
+const password = ref<string>('')
+const errorMsg = ref<string>('')
+
 
 const onSubmit = async () => {
   errorMsg.value = ''
@@ -33,7 +43,8 @@ const onSubmit = async () => {
     })
     await navigateTo('/dashboard')
   } catch (err: any) {
-    errorMsg.value = err?.data?.statusMessage || '登入失敗，請稍後再試'
+    errorMsg.value = err?.data?.statusMessage || '登入失敗'
+
   }
 }
 </script>

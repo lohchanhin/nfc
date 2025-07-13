@@ -18,10 +18,6 @@ export default defineEventHandler(async (event) => {
 
   const body = await readBody(event)
   const plan = body?.plan as string | undefined
-  if (!user) {
-    setResponseStatus(event, 404)
-    return {}
-  }
 
 
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {

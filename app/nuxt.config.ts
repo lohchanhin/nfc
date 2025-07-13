@@ -10,6 +10,11 @@ export default defineNuxtConfig({
     '#utils': resolve(__dirname, 'server/utils')
   },
   runtimeConfig: {
+    public: {
+      GA_ID: process.env.GA_ID
+    }
+
     stripeWebhookSecret: process.env.STRIPE_WEBHOOK_SECRET
+
   }
 })

@@ -143,6 +143,7 @@
 </template>
 
 <script setup lang="ts">
+const config = useRuntimeConfig()
 useHead({
   title: 'NFC 評論系統 - 一觸獲五星好評',
   meta: [
@@ -153,13 +154,13 @@ useHead({
     }
   ],
   script: [
-    { src: 'https://www.googletagmanager.com/gtag/js?id=G-XXXX', async: true },
+    { src: `https://www.googletagmanager.com/gtag/js?id=${config.public.GA_ID}`, async: true },
     {
       innerHTML: `
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-XXXX');
+        gtag('config', '${config.public.GA_ID}');
       `,
       type: 'text/javascript'
     }

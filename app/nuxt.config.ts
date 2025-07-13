@@ -8,5 +8,8 @@ export default defineNuxtConfig({
   },
   alias: {
     '#utils': resolve(__dirname, 'server/utils')
+  },
+  runtimeConfig: {
+    stripeWebhookSecret: process.env.STRIPE_WEBHOOK_SECRET
   }
 })

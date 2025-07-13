@@ -1,4 +1,8 @@
 app/node_modules
 app/.output
+app/.nuxt
 .DS_Store
 *.log
+*.env
+*.env.*
+!.env.example

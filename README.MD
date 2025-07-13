@@ -10,4 +10,6 @@ npm install        # 如環境允許，安裝相依套件
 npm run dev        # 啟動開發伺服器
 ```
 
+複製 `.env.example` 為 `.env` 後可調整資料庫連線字串，預設使用 SQLite。
+
 Prisma schema 位於 `app/prisma/schema.prisma`，`server/routes/` 目前為空目錄，可自行新增 API 路由。

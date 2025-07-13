@@ -1,4 +1,5 @@
 import { defineNuxtConfig } from 'nuxt/config'
+import { resolve } from 'path'
 
 export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss'],
@@ -6,6 +7,6 @@ export default defineNuxtConfig({
     strict: true
   },
   alias: {
-    '#utils': './server/utils'
+    '#utils': resolve(__dirname, 'server/utils')
   }
 })

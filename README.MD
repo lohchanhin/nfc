@@ -59,6 +59,7 @@ Prisma schema 位於 `app/prisma/schema.prisma`，`server/routes/` 目前為空�
    ```env
    DATABASE_URL=mongodb://localhost:27017/nfc
    STRIPE_SECRET_KEY=your_stripe_secret
+   STRIPE_WEBHOOK_SECRET=your_webhook_secret
    JWT_SECRET=your_jwt_secret
    GA_ID=G-XXXX
    ```
@@ -106,6 +107,7 @@ Prisma schema 位於 `app/prisma/schema.prisma`，`server/routes/` 目前為空�
 3. 在頁面上留下好評或透過 Stripe 完成付款流程。
 4. 後台可查看累積的好評與交易紀錄。
 5. 會員登入後可於 Dashboard 檢視訂閱狀態並隨時取消。
+6. 在 Stripe 後台設定 Webhook 指向 `/api/stripe-webhook`，並於 `.env` 填入 `STRIPE_WEBHOOK_SECRET`。
 
 ## Landing Page 特色
 

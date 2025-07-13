@@ -13,5 +13,8 @@ export default defineNuxtConfig({
     public: {
       GA_ID: process.env.GA_ID
     }
+
+    stripeWebhookSecret: process.env.STRIPE_WEBHOOK_SECRET
+
   }
 })

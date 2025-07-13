@@ -24,6 +24,11 @@ export default defineEventHandler(async (event) => {
   })
 
   const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET as string)
-  setCookie(event, 'token', token, { httpOnly: true, path: '/' })
+  setCookie(event, 'token', token, {
+    httpOnly: true,
+    path: '/',
+    secure: true,
+    sameSite: 'lax'
+  })
   return { id: user.id, email: user.email }
 })

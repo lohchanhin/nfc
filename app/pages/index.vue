@@ -95,7 +95,7 @@
           <p class="mb-4">含兩片 NFC 板及設定</p>
           <button
             class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-            @click="goCheckout"
+            @click="goCheckout('one-time')"
           >
             立即購買
           </button>
@@ -106,7 +106,7 @@
           <p class="mb-4">每月收費，隨時取消</p>
           <button
             class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-            @click="goCheckout"
+            @click="goCheckout('subscription')"
           >
             立即訂閱
           </button>
@@ -172,13 +172,13 @@ interface CheckoutSessionRes {
   url: string
 }
 
-const goCheckout = async () => {
+const goCheckout = async (plan?: string) => {
   if (loading.value) return
   loading.value = true
   try {
     const { url } = await $fetch<CheckoutSessionRes>(
       '/api/create-checkout-session',
-      { method: 'POST' }
+      { method: 'POST', body: { plan } }
     )
     window.location.href = url
   } finally {

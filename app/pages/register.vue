@@ -23,6 +23,7 @@
       >
         註冊
       </button>
+
     </form>
   </div>
 </template>
@@ -31,6 +32,7 @@
 const email = ref<string>('')
 const password = ref<string>('')
 const errorMsg = ref<string>('')
+
 
 const onSubmit = async () => {
   errorMsg.value = ''
@@ -42,6 +44,7 @@ const onSubmit = async () => {
     await navigateTo('/dashboard')
   } catch (err: any) {
     errorMsg.value = err?.data?.statusMessage || '註冊失敗'
+
   }
 }
 </script>

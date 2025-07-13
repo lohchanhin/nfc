@@ -18,6 +18,13 @@
         >
           取消訂閱
         </button>
+        <button
+          v-if="status"
+          @click="onPortal"
+          class="mt-4 ml-2 px-4 py-2 bg-blue-600 text-white rounded"
+        >
+          管理訂閱
+        </button>
       </div>
       <button
         class="px-4 py-2 bg-gray-600 text-white rounded"
@@ -61,6 +68,11 @@ const onCancel = async () => {
   if (confirm('確定要取消訂閱嗎？')) {
     await cancel()
   }
+}
+
+const { openPortal } = useBilling()
+const onPortal = async () => {
+  await openPortal()
 }
 
 const { logout } = useAuth()

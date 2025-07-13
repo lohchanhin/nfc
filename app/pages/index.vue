@@ -143,6 +143,7 @@
 </template>
 
 <script setup lang="ts">
+definePageMeta({ layout: "default" })
 const config = useRuntimeConfig()
 useHead({
   title: 'NFC 評論系統 - 一觸獲五星好評',

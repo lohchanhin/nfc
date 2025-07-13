@@ -78,7 +78,9 @@ Prisma schema 位於 `app/prisma/schema.prisma`，`server/routes/` 目前為空�
 
 1. 確認 `app/` 目錄內已有 `.env` 檔，可由 `.env.example` 複製產生。
 2. 於 `app/` 執行 `pnpm install`（或 `npm install`）安裝相依套件。
-3. 如使用 Prisma，先執行 `pnpm prisma db push` 同步資料庫 schema。
+3. 如使用 Prisma，先執行 `pnpm prisma db push` 同步資料庫 schema。若日後更新
+   `app/prisma/schema.prisma`（例如移除範例 `Example` model），亦需再次執行
+   `pnpm prisma db push` 以更新資料庫結構。
 4. 之後執行 `pnpm dev`（或 `npm run dev`）即可同時啟動 Nuxt 前端與伺服器端 API。
 
 ## 部署方式

@@ -6,15 +6,17 @@
         v-model="email"
         type="email"
         placeholder="Email"
-        class="w-full border border-gray-300 rounded p-2"
+        autocomplete="email"
+        class="w-full border border-gray-300 rounded px-4 py-2"
       />
       <input
         v-model="password"
         type="password"
         placeholder="Password"
-        class="w-full border border-gray-300 rounded p-2"
+        autocomplete="new-password"
+        class="w-full border border-gray-300 rounded px-4 py-2"
       />
-      <p v-if="errorMsg" class="text-red-500">{{ errorMsg }}</p>
+      <p v-if="errorMsg" class="text-red-500 text-sm">{{ errorMsg }}</p>
       <button
         type="submit"
         class="w-full py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
@@ -26,9 +28,9 @@
 </template>
 
 <script setup lang="ts">
-const email = ref('')
-const password = ref('')
-const errorMsg = ref('')
+const email = ref<string>('')
+const password = ref<string>('')
+const errorMsg = ref<string>('')
 
 const onSubmit = async () => {
   errorMsg.value = ''

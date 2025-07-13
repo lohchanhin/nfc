@@ -58,7 +58,8 @@ Prisma schema 位於 `app/prisma/schema.prisma`，`server/routes/` 目前為空�
 3. 設定環境變數 `.env`：
    ```env
    DATABASE_URL=postgres://user:password@localhost:5432/db_name
-   STRIPE_KEY=your_stripe_secret
+   STRIPE_SECRET_KEY=your_stripe_secret
+   JWT_SECRET=your_jwt_secret
    ```
 4. 建立資料庫與執行遷移（若有使用 ORM，如 Prisma）：
    ```bash
@@ -86,6 +87,7 @@ Prisma schema 位於 `app/prisma/schema.prisma`，`server/routes/` 目前為空�
 2. 使用者以行動裝置掃描 NFC 後，進入對應的 Nuxt 網頁。
 3. 在頁面上留下好評或透過 Stripe 完成付款流程。
 4. 後台可查看累積的好評與交易紀錄。
+5. 會員登入後可於 Dashboard 檢視訂閱狀態並隨時取消。
 
 ## 開發者注意事項
 

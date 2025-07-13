@@ -4,5 +4,8 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss'],
   typescript: {
     strict: true
+  },
+  alias: {
+    '#utils': './server/utils'
   }
 })

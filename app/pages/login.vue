@@ -24,14 +24,28 @@
         登入
       </button>
 
+      <button
+        type="button"
+        class="w-full py-2 bg-green-600 text-white rounded hover:bg-green-700"
+        @click="oidcLogin"
+      >
+        第三方登入
+      </button>
     </form>
   </div>
 </template>
 
 <script setup lang="ts">
+
 const email = ref<string>('')
 const password = ref<string>('')
 const errorMsg = ref<string>('')
+
+const { login: oidcLogin, handleCallback } = useAuth()
+
+onMounted(() => {
+  handleCallback()
+})
 
 
 const onSubmit = async () => {

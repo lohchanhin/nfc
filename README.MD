@@ -71,6 +71,13 @@ Prisma schema 位於 `app/prisma/schema.prisma`，`server/routes/` 目前為空�
    pnpm dev
    ```
 
+## 本地端開發流程
+
+1. 確認 `app/` 目錄內已有 `.env` 檔，可由 `.env.example` 複製產生。
+2. 於 `app/` 執行 `pnpm install`（或 `npm install`）安裝相依套件。
+3. 如使用 Prisma，先執行 `pnpm prisma db push` 同步資料庫 schema。
+4. 之後執行 `pnpm dev`（或 `npm run dev`）即可同時啟動 Nuxt 前端與伺服器端 API。
+
 ## 部署方式
 
 ### 本機部署
@@ -81,6 +88,16 @@ Prisma schema 位於 `app/prisma/schema.prisma`，`server/routes/` 目前為空�
 1. 在 Vercel 建立新專案並連結此儲存庫。
 2. 設定 Vercel 的環境變數（如 `DATABASE_URL`、`STRIPE_KEY`）。
 3. Vercel 會自動執行 `pnpm install` 與 `pnpm build`，完成後即可透過 Vercel 伺服器存取。
+
+### 部署到 Heroku
+1. 於專案根目錄新增 `Procfile`，內容為：
+   ```
+   web: pnpm start
+   ```
+2. 在 Heroku 的「Config Vars」設定 `.env` 內的環境變數。
+3. 將程式碼推送至 Git 儲存庫並連結到 Heroku。
+4. 確認 Heroku 啟用 Node.js buildpack，部署時便會自動執行 `pnpm install` 與 `pnpm build`。
+5. 部署完成後即可透過 Heroku 提供的網址存取應用程式。
 
 ## 基本使用流程
 

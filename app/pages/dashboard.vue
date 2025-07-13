@@ -12,8 +12,11 @@
 <script setup lang="ts">
 definePageMeta({ middleware: 'auth' })
 
-const { data, pending, refresh } = await useFetch('/api/subscription')
-const status = computed(() => data.value?.status)
+interface SubscriptionRes { status: string | null }
+
+const { data, pending, refresh } =
+  await useFetch<SubscriptionRes>('/api/subscription')
+const status = computed(() => data.value?.status ?? null)
 
 const cancel = async () => {
   await $fetch('/api/subscription/cancel', { method: 'POST' })

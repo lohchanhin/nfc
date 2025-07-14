@@ -116,6 +116,7 @@ Prisma schema 位於 `app/prisma/schema.prisma`，`server/routes/` 目前為空�
 ## Landing Page 特色
 
 首頁提供導購式版面，包含社會證明、功能亮點、流程示意與價格卡，CTA 會呼叫 `/api/create-checkout-session` 建立 Stripe 結帳連結，並於 Google Analytics（透過 `GA_ID`）記錄點擊。
+此頁面同時提供付費說明，使用者可選擇一次性購買或訂閱方案；完成付款後系統會透過 Stripe 寄送電子收據並更新會員權限。
 
 ## 開發者注意事項
 

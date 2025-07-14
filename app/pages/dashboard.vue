@@ -59,13 +59,8 @@ const { data: subData, pending: pendingSub, refresh } =
   await useFetch<SubscriptionRes>('/api/subscription')
 const { data: userData, pending: pendingUser } = await useFetch<UserRes>('/api/user')
 
-const api = useApi()
-const { data: usageData, pending: pendingUsage } = await useAsyncData(
-  'usage',
-  async () => {
-    const res = await api.get<UsageRes>('/api/user/usage')
-    return res.data
-  }
+const { data: usageData, pending: pendingUsage } = await useFetch<UsageRes>(
+  '/api/user/usage'
 )
 
 const user = computed(() => userData.value)

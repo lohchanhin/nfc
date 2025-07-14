@@ -95,14 +95,18 @@ const { data: subData, pending: pendingSub, refresh } = await useFetch<Subscript
 
 const { data: userData, pending: pendingUser } = await useFetch<UserRes>('/api/user')
 
-const api = useApi()
-const { data: usageData, pending: pendingUsage } = await useAsyncData('usage', async () => {
-  const res = await api.get<UsageRes>('/api/user/usage')
-  return res.data
+// 取得用量資料，直接使用 useFetch
+const {
+  data: usageData,
+  pending: pendingUsage
+} = await useFetch<UsageRes>('/api/user/usage', {
+  key: () => `usage-${userData.value?.id ?? 'anon'}`,
+  server: true,
+  lazy: false
 })
 
 // --------------------------------------------------
-// 計算屬性（使用推斷，避免 Ref 型別不匹配問題）
+// 計算屬性
 // --------------------------------------------------
 const user = computed(() => userData.value as UserRes | null)
 const status = computed(() => subData.value?.status ?? null)

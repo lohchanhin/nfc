@@ -89,13 +89,17 @@ interface UsageRes {
 // --------------------------------------------------
 // API 請求
 // --------------------------------------------------
-const { data: subData, pending: pendingSub, refresh } = await useFetch<SubscriptionRes>(
-  '/api/subscription'
-)
+const {
+  data: subData,
+  pending: pendingSub,
+  refresh
+} = await useFetch<SubscriptionRes>('/api/subscription')
 
-const { data: userData, pending: pendingUser } = await useFetch<UserRes>('/api/user')
+const {
+  data: userData,
+  pending: pendingUser
+} = await useFetch<UserRes>('/api/user')
 
-// 取得用量資料，直接使用 useFetch
 const {
   data: usageData,
   pending: pendingUsage
@@ -108,9 +112,9 @@ const {
 // --------------------------------------------------
 // 計算屬性
 // --------------------------------------------------
-const user = computed(() => userData.value as UserRes | null)
+const user = computed(() => userData.value)
 const status = computed(() => subData.value?.status ?? null)
-const usage = computed(() => usageData.value as UsageRes | null | undefined)
+const usage = computed(() => usageData.value)
 const exp = computed(() => {
   const ts = usage.value?.expiration
   return ts ? new Date(ts * 1000).toLocaleDateString('zh-TW') : null

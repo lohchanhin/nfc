@@ -1,20 +1,19 @@
-import axios from 'axios'
 import { useAuthStore } from '../stores/auth'
 
-export function useApi() {
-  const config = useRuntimeConfig()
-  const instance = axios.create({
-    baseURL: config.public?.API_BASE_URL || ''
-  })
+export const useApi = () => {
+  const cfg = useRuntimeConfig()
 
-  instance.interceptors.request.use((request) => {
+  return async <T>(url: string, opts: FetchOptions = {}) => {
     const store = useAuthStore()
+    const headers = new Headers(opts.headers || {})
     if (store.accessToken) {
-      request.headers = request.headers || {}
-      ;(request.headers as any).Authorization = `Bearer ${store.accessToken}`
+      headers.set('Authorization', `Bearer ${store.accessToken}`)
     }
-    return request
-  })
 
-  return instance
+    return $fetch<T>(url, {
+      baseURL: cfg.public.apiBase ?? '/api',
+      ...opts,
+      headers
+    })
+  }
 }

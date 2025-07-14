@@ -9,9 +9,9 @@
       <p class="mb-6 text-gray-600">掃描 NFC 標籤，立即收集 Google 評論</p>
       <button
         class="px-6 py-3 bg-blue-600 text-white rounded hover:bg-blue-700"
-        @click="goCheckout"
+        @click="goCheckout('subscription')"
       >
-        開始使用 (RM199)
+        立即開始
       </button>
     </section>
 
@@ -88,27 +88,16 @@
     <!-- Pricing -->
     <section class="py-12 px-4 text-center">
       <h2 class="text-xl font-semibold mb-6">方案價格</h2>
-      <div class="flex flex-col md:flex-row justify-center gap-6">
+      <div class="flex justify-center">
         <div class="border p-6 rounded shadow w-64 mx-auto">
-          <h3 class="font-bold mb-2">一次性方案</h3>
+          <h3 class="font-bold mb-2">訂閱方案</h3>
           <p class="text-3xl font-bold mb-4">RM199</p>
-          <p class="mb-4">含兩片 NFC 板及設定</p>
-          <button
-            class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-            @click="goCheckout('one-time')"
-          >
-            立即購買
-          </button>
-        </div>
-        <div class="border p-6 rounded shadow w-64 mx-auto">
-          <h3 class="font-bold mb-2">月租方案</h3>
-          <p class="text-3xl font-bold mb-4">RM19.9</p>
-          <p class="mb-4">每月收費，隨時取消</p>
+          <p class="mb-4">首次支付，往後每月 RM19.9</p>
           <button
             class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
             @click="goCheckout('subscription')"
           >
-            立即訂閱
+            立即開始
           </button>
         </div>
       </div>
@@ -128,9 +117,9 @@
       <div class="text-center mt-8">
         <button
           class="px-6 py-3 bg-blue-600 text-white rounded hover:bg-blue-700"
-          @click="goCheckout"
+          @click="goCheckout('subscription')"
         >
-          馬上體驗
+          立即開始
         </button>
       </div>
     </section>
